@@ -3,7 +3,6 @@ from flask import Flask,render_template,request,redirect,url_for,jsonify
 import json
 import speech_recognition as sr
 import io
-from pathlib import Path
 from flask_cors import CORS
 
 def SpeechToText(path):
@@ -39,7 +38,7 @@ def result():
         text=SpeechToText(file_obj)
         print(text)
         return (text)
-    else:
+    elif request.method=='GET':
         return ("bad request")
 
 if __name__=='__main__':
